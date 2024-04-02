@@ -1,0 +1,58 @@
+.list {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list .item {
+  width: calc(50% - 10px); /* 计算宽度，考虑到边距 */
+  padding: 10px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+  transition: box-shadow 0.3s ease; /* 添加过渡效果 */
+}
+
+.list .item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 悬停时增加阴影 */
+}
+
+.list .item .goods_img image {
+  width: 100%;
+  display: block;
+  border-radius: 8px; /* 图片圆角 */
+}
+
+.list .item .goods_info {
+  padding-top: 10px;
+}
+
+.list .item .goods_info .goods_name {
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.4;
+  height: 3.6rem; /* 调整商品名称容器高度 */
+  overflow: hidden;
+  color: #434343;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.list .item .goods_info .goods_price {
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ff4142;
+  margin-top: 5px;
+}
+
+.list .item .goods_info .goods_price text {
+  font-size: 16px;
+  font-weight: bold;
+}

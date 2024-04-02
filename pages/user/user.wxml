@@ -1,0 +1,11 @@
+<view class="user-container">
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <image class="avatar" mode="widthFix" src="{{ userInfo.avatarUrl }}"></image>
+      <text class="nickname">{{ userInfo.nickName }}</text>
+    </block>
+    <block wx:else>
+      <button class="login-button" type="primary" bindtap="getUserProfile">登录</button>
+    </block>
+  </view>
+</view>
