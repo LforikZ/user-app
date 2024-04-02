@@ -8,4 +8,40 @@
       <button class="login-button" type="primary" bindtap="getUserProfile">登录</button>
     </block>
   </view>
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">查看销量</button>
+    </block>
+  </view>
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">查看营业额</button>
+    </block>
+  </view>
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">查看临期商品</button>
+    </block>
+  </view>
+
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">添加商品</button>
+    </block>
+  </view>
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">更新商品</button>
+    </block>
+  </view>
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">删除商品</button>
+    </block>
+  </view>
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname">退出登录</button>
+    </block>
+  </view>
 </view>
