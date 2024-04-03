@@ -9,6 +9,7 @@
 
 .list .item {
   width: calc(50% - 10px); /* 计算宽度，考虑到边距 */
+   min-width: 100px; /*设置最小宽度 */
   padding: 10px;
   box-sizing: border-box;
   background: #fff;

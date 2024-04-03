@@ -12,7 +12,7 @@
   <!-- 其他页面元素 -->
   <view class="header">
     <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname" bindtap="viewExpiringProducts">查看临期商品</button>
+      <button class="nickname" bindtap="viewExpiringProducts" style="position: relative; left: 0rpx; top: 1rpx">查看临期商品</button>
     </block>
   </view>
 

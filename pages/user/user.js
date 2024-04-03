@@ -59,6 +59,12 @@ Page({
       }
     })
   },
+  // 查看临期商品
+  viewExpiringProducts() {
+    wx.navigateTo({
+      url: '/pages/expiring-products/expiring-products'
+    });
+  },
 
   logout() {
     // 清除本地存储的登录信息

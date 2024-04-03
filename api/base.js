@@ -15,6 +15,7 @@ module.exports = {
   delCart: "/api/cart/del", // 删除购物车
   categoryList: "/api/category/list", // 获取分类列表
   categoryGoods: "/api/category/goods", // 获取分类下的所有商品
+  expirationGoods:"/api/expiration/list", // 获取临期食品
   buy: "/api/buy", // 购买
   login: "/api/login", // 登录
 }

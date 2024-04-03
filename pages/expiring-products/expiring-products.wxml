@@ -1,0 +1,12 @@
+<view class="wrapper" >
+    <view class="left-nav">
+        <van-sidebar active-key="{{ activeKey }}">
+            <block wx:for="{{ sliderData }}" wx:key="index">
+                <van-sidebar-item data-title="{{ item.id }}" bindtap="clickItemNav" title="{{ item.name }}" />
+            </block>
+        </van-sidebar>
+    </view>
+
+    <goods-list goodsData="{{ categoryData }}"> </goods-list>
+</view>
+

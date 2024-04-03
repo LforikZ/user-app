@@ -1,15 +1,23 @@
 <view class="list">
-    <view class="item" wx:for="{{ goodsData }}" wx:key="index">
-        <navigator url="/pages/details/details?id={{ item.id }}">
-            <view class="goods_img">
-                <image mode="widthFix" src="{{ item.url}}"></image>
-            </view>
-            <view class="goods_info">
-                <text class="goods_name">{{ item.title }}</text>
-                <view class="goods_price">
-                    ￥<text>{{ item.price }}</text>/{{ item.price_module }}
-                </view>
-            </view>
-        </navigator>
-    </view>
+  <view class="item" wx:for="{{ goodsData }}" wx:key="index">
+    <navigator url="/pages/details/details?id={{ item.id }}">
+      <view class="goods_img">
+        <image mode="widthFix" src="{{ item.url}}"></image>
+      </view>
+      <view class="goods_info">
+        <text class="goods_name">{{ item.title }}</text>
+        <view class="goods_price">
+          ￥<text>{{ item.price }}</text>/{{ item.price_module }}
+        </view>
+      </view>
+    </navigator>
+
+    <!-- 根据 operationType 显示不同的操作按钮 -->
+    <block wx:if="{{ operationType === 'delete' }}">
+      <button class="delete-button" data-id="{{ item.id }}" bindtap="deleteProduct">删除</button>
+    </block>
+    <block wx:if="{{ operationType === 'update' }}">
+      <button class="update-button" data-id="{{ item.id }}" bindtap="updateProduct">更新</button>
+    </block>
+  </view>
 </view>
