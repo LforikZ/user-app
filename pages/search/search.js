@@ -75,7 +75,7 @@ Page({
         }
       })
     }
-   
+
     wx.navigateTo({
       url: '/pages/goods/goods?search=' + search,
     })

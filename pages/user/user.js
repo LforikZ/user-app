@@ -52,6 +52,7 @@ Page({
             wx.setStorageSync('isMerchant', this.isMerchant)
           }
         })
+        console.log("登录成功")
       },
       fail: (err) => { // 使用箭头函数
         console.log(err);
@@ -62,7 +63,8 @@ Page({
   logout() {
     // 清除本地存储的登录信息
     wx.removeStorageSync('loginID');
-
+    wx.removeStorageSync('isMerchant');
+    console.log("退出登录")
     // 可选：向服务器发送请求通知退出登录（如果需要）
     /*
     wx.request({
@@ -83,8 +85,9 @@ Page({
     this.setData({
       userInfo: {
         nickName: '',
-        isMerchant: false
-      }
+      },
+      isMerchant: false // 将 isMerchant 设置为 false
     });
+    console.log(this.isMerchant)
   }
 })
