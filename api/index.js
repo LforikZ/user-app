@@ -1,5 +1,5 @@
 const { request } = require("../utils/request.js")
-const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,categoryGoods,buy, categoryList } = require("./base")
+const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,categoryGoods,buy, categoryList,searchContest } = require("./base")
 /**
  * 网络请求方法
  */
@@ -86,6 +86,10 @@ function getLogin(data){
     return request(baseUrl + login,"POST",data) 
 }
 
+function addSearchContest(data){
+  return request(baseUrl + searchContest,"POST",data) 
+}
+
 module.exports = {
     getBanner,
     getGoods,
@@ -98,5 +102,6 @@ module.exports = {
     getCategoryList,
     getCategoryGoods,
     getBuy,
-    getLogin
+    getLogin,
+    addSearchContest
 }

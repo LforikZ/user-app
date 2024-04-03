@@ -1,6 +1,7 @@
 const {
   getHotSearch,
-  getSearch
+  getSearch,
+  addSearchContest
 } = require("../../api/index.js")
 
 Page({
@@ -54,8 +55,29 @@ Page({
     this.http(e.currentTarget.dataset.hotkey)
   },
   http(search) {
+    // 获取用户ID
+    const userID = wx.getStorageSync("loginID");
+    // 获取搜索内容
+    const searchContent = this.data.value;
+    // 发起请求到后端接口，传递用户ID和搜索内容作为参数
+    if (searchContent != "") {
+      addSearchContest({
+        user_id: userID,
+        content: searchContent
+      }).then(res => {
+        console.log(searchContent)
+        if (res.data.status_code === 200 && res.data.code === 10000) {
+          console.log(res.data.data)
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      })
+    }
+   
     wx.navigateTo({
-      url: '/pages/goods/goods?search='+search,
+      url: '/pages/goods/goods?search=' + search,
     })
   }
 })

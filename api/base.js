@@ -7,6 +7,7 @@ module.exports = {
   banner: "/api/banner", // 轮播图
   goods: "/api/goods", // 商品列表
   hotSearch: "/api/keywords", // 热门搜索
+  searchContest: "/api/keywords/add", // 记录搜索内容
   search: "/api/goods/search", // 搜索
   goodsDetails: "/api/goods/details", // 商品详情
   cart: "/api/cart/get", // 购物车查询
