@@ -8,41 +8,42 @@
       <button class="login-button" type="primary" bindtap="getUserProfile">登录</button>
     </block>
   </view>
+
+  <!-- 其他页面元素 -->
   <view class="header">
     <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">查看销量</button>
-    </block>
-  </view>
-  <view class="header">
-    <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">查看营业额</button>
-    </block>
-  </view>
-  <view class="header">
-    <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">查看临期商品</button>
+      <button class="nickname" bindtap="viewExpiringProducts">查看临期商品</button>
     </block>
   </view>
 
-  <view class="header">
-    <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">添加商品</button>
-    </block>
-  </view>
-  <view class="header">
-    <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">更新商品</button>
-    </block>
-  </view>
-  <view class="header">
-    <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">删除商品</button>
-    </block>
-  </view>
-  <view class="header">
-  <block wx:if="{{ userInfo.nickName }}">
-    <button class="nickname logout-button" bindtap="logout">退出登录</button>
+  <!-- 商家特有的操作按钮 -->
+  <block wx:if="{{ isMerchant }}">
+    <view class="header">
+      <block wx:if="{{ userInfo.nickName }}">
+        <button class="nickname" bindtap="viewSales">查看销量</button>
+      </block>
+    </view>
+    <view class="header">
+      <block wx:if="{{ userInfo.nickName }}">
+        <button class="nickname" bindtap="viewRevenue">查看营业额</button>
+      </block>
+    </view>
+    <view class="header">
+      <button class="nickname" bindtap="addProduct">添加商品</button>
+    </view>
+    <view class="header">
+      <button class="nickname" bindtap="updateProduct">更新商品</button>
+    </view>
+    <view class="header">
+      <button class="nickname" bindtap="deleteProduct">删除商品</button>
+    </view>
   </block>
-</view>
 
+
+  <!-- 退出登录按钮 -->
+  <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname logout-button" bindtap="logout">退出登录</button>
+    </block>
+  </view>
 </view>

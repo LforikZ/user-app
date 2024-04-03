@@ -5,6 +5,7 @@ const {
 Page({
   data: {
     userInfo: {},
+    isMerchant: false // 默认不是商家
   },
   onLoad(options) {
     // 验证用户登录信息的状态是否处于有效期：增加一个接口，然后测试有效期
@@ -35,7 +36,7 @@ Page({
   },
   loginHandle() {
     wx.login({
-      success(response) {
+      success: (response) => { // 使用箭头函数
         console.log(response)
         getLogin({
           code: response.code
@@ -43,13 +44,21 @@ Page({
           console.log(res.data.data.result)
           wx.setStorageSync('loginID', res.data.data.result)
           console.log(wx.getStorageSync("loginID"))
+          // 检查 loginID 是否为商家标识
+          if (wx.getStorageSync("loginID") === 'oSLGA6p9a_8EonTJCfYvwz1GatPw') {
+            this.setData({
+              isMerchant: true
+            });
+            wx.setStorageSync('isMerchant', this.isMerchant)
+          }
         })
       },
-      fail(err) {
+      fail: (err) => { // 使用箭头函数
         console.log(err);
       }
     })
   },
+
   logout() {
     // 清除本地存储的登录信息
     wx.removeStorageSync('loginID');
@@ -73,7 +82,8 @@ Page({
     // 清除本地存储的登录信息后，更新页面数据以显示登录按钮
     this.setData({
       userInfo: {
-        nickName: ''
+        nickName: '',
+        isMerchant: false
       }
     });
   }
