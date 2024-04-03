@@ -49,5 +49,32 @@ Page({
         console.log(err);
       }
     })
+  },
+  logout() {
+    // 清除本地存储的登录信息
+    wx.removeStorageSync('loginID');
+
+    // 可选：向服务器发送请求通知退出登录（如果需要）
+    /*
+    wx.request({
+      url: 'https://your-api.com/logout', // 替换为你的后端退出登录接口地址
+      method: 'POST', // 或者其他请求方法，根据你的后端接口要求来定
+      header: {
+        'Authorization': 'Bearer ' + wx.getStorageSync('token'), // 将用户认证信息传递给后端
+      },
+      success: function(res) {
+        console.log('Logout success:', res);
+      },
+      fail: function(error) {
+        console.error('Logout failed:', error);
+      }
+    });
+    */
+    // 清除本地存储的登录信息后，更新页面数据以显示登录按钮
+    this.setData({
+      userInfo: {
+        nickName: ''
+      }
+    });
   }
 })

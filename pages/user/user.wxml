@@ -40,8 +40,9 @@
     </block>
   </view>
   <view class="header">
-    <block wx:if="{{ userInfo.nickName }}">
-      <button class="nickname">退出登录</button>
-    </block>
-  </view>
+  <block wx:if="{{ userInfo.nickName }}">
+    <button class="nickname logout-button" bindtap="logout">退出登录</button>
+  </block>
+</view>
+
 </view>
