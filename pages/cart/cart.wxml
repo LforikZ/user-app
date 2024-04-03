@@ -1,8 +1,21 @@
 <view class="cart">
-    <view class="list" wx:for="{{ cartData }}" wx:key="index">
-        <van-swipe-cell right-width="{{ 65 }}">
-            <van-card price="{{ item.price }}" title="{{ item.title }}" thumb="{{ item.url }}" />
-            <!-- <view data-id="{{ item.id }}" bindtap="delCartHandle" slot="right" class="van-swipe-cell-right">删除</view> -->
-        </van-swipe-cell>
-    </view>
+    <!-- 全选按钮 -->
+    <checkbox class="select-all" bindtap="selectAllHandle" checked="{{ isAllSelected }}">全选</checkbox>
+    <!-- 购物车列表 -->
+    <scroll-view class="list" scroll-y="true">
+        <block wx:for="{{ cartData }}" wx:key="index">
+            <view class="cart-item">
+                <!-- 复选框 -->
+                <checkbox class="checkbox" data-id="{{ item.id }}" bindtap="toggleSelectHandle" checked="{{ isSelected(item.id) }}"></checkbox>
+                <div>{{ item.id }}  你好{{selectedIds}}</div>
+                <!-- 商品信息 -->
+                <van-swipe-cell right-width="{{ 65 }}">
+                    <van-card style="position: relative; left: 0rpx; top: 0rpx" price="{{ item.price }}" title="{{ item.title }}" thumb="{{ item.url }}" />
+                    <view data-id="{{ item.id }}" bindtap="delCartHandle" slot="right" class="van-swipe-cell-right">删除</view>
+                </van-swipe-cell>
+            </view>
+        </block>
+    </scroll-view>
+    <!-- 删除选中按钮 -->
+    <view class="delete-selected" bindtap="deleteSelectedHandle">删除选中</view>
 </view>
