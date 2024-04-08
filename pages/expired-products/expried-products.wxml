@@ -1,6 +1,6 @@
 <view class="wrapper">
     <view class="title-nav-container">
-        <view class="page-title">临期食品</view>
+        <view class="page-title">过期食品</view>
         <view class="content-container">
             <view class="left-nav">
                 <van-sidebar active-key="{{ activeKey }}">

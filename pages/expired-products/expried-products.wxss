@@ -14,7 +14,7 @@
   font-weight: bold;
   margin-bottom: 20px; /* 调整标题与左侧导航之间的间距 */
   text-align: center; /* 文字居中 */
-  color: orange; /* 修改文字颜色为蓝色 */
+  color: red; /* 修改文字颜色为蓝色 */
 }
 
 .content-container {

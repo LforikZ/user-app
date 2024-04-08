@@ -8,7 +8,8 @@
         "pages/goods/goods",
         "pages/details/details",
         "pages/buy/buy",
-        "pages/expiring-products/expiring-products"
+        "pages/expiring-products/expiring-products",
+        "pages/expired-products/expried-products"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -39,7 +39,7 @@ Page({
     console.log(id)
     getExpirationGoods({
       tag_id:id,
-      flag:0, // 临期食品
+      flag:1, // 过期食品
     }).then(res => {
       console.log(id)
       console.log(res)

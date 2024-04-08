@@ -17,7 +17,13 @@
   </view>
 
   <!-- 商家特有的操作按钮 -->
+  
   <block wx:if="{{ isMerchant }}">
+    <view class="header">
+    <block wx:if="{{ userInfo.nickName }}">
+      <button class="nickname" bindtap="viewExpiredProducts" style="position: relative; left: 0rpx; top: 1rpx">查看过期商品</button>
+    </block>
+  </view>
     <view class="header">
       <block wx:if="{{ userInfo.nickName }}">
         <button class="nickname" bindtap="viewSales">查看销量</button>
