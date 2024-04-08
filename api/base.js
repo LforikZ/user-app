@@ -2,8 +2,8 @@
  * 存储接口地址
  */
 module.exports = {
-  // baseUrl:"http://iwenwiki.com:3001",   
-  baseUrl: "http://127.0.0.1:8019", // 公共地址
+  baseUrl:"http://8.134.38.34:8019",   // 线上地址
+  // baseUrl: "http://127.0.0.1:8019", // 本地地址
   banner: "/api/banner", // 轮播图
   goods: "/api/goods", // 商品列表
   hotSearch: "/api/keywords", // 热门搜索
