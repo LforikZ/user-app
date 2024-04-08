@@ -51,7 +51,7 @@ function getCart(data){
  * cart add
  */
 function addGoodsCart(data){
-    return request(baseUrl + addCart,"GET",data) 
+    return request(baseUrl + addCart,"PUT",data) 
 }
 
 /**

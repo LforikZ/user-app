@@ -27,6 +27,7 @@ Page({
                     goodsDetails:res.data.data.result,
                     swiperImages: [res.data.data.result.url, res.data.data.result.url_detail]
                 })
+                console.log(this.goodsDetails)
             }else{
                 wx.showToast({
                   title: '数据获取失败',
@@ -53,15 +54,18 @@ Page({
      */
     onClickAddCart(){
         addGoodsCart({
-            title:this.data.goodsDetails.title,
-            price:this.data.goodsDetails.price,
-            image:this.data.goodsDetails.topimage,
-            currentID:this.data.goodsDetails.id
+           open_id:wx.getStorageSync('loginID'),
+           good_id:this.data.goodsDetails.id,
+           good_num:1,
+           good_price:this.data.goodsDetails.price,
         }).then(res =>{
-            if(res.data.status === 200){
-                wx.showToast({
-                  title: res.data.msg,
-                })
+          console.log("执行添加购物车")
+          console.log(res.data)
+            if(res.data.F_responseNo === 10000){
+              console.log("加入购物车成功")
+                // wx.showToast({
+                //   title: res.data.msg,
+                // })
             }else{
                 wx.showToast({
                   title: res.data.msg,
