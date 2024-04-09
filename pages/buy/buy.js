@@ -21,10 +21,31 @@ Page({
       console.log(this.data.goodsData)
     })
   },
+  // 增加数量的函数
+  increaseQuantity() {
+    const { goodsData } = this.data;
+    goodsData.num++; // 增加数量
+    this.setData({
+      goodsData: goodsData
+    });
+  },
+  // 减少数量的函数
+  decreaseQuantity() {
+    const { goodsData } = this.data;
+    if (goodsData.num > 1) { // 确保数量不小于1
+      goodsData.num--; // 减少数量
+      this.setData({
+        goodsData: goodsData
+      });
+    }
+  },
   onSubmit() {
     wx.showToast({
       title: '购买完成',
       icon: "success"
+    })
+    wx.switchTab({
+      url: '/pages/index/index',
     })
   }
 })
