@@ -63,9 +63,9 @@ Page({
           console.log(res.data)
             if(res.data.F_responseNo === 10000){
               console.log("加入购物车成功")
-                // wx.showToast({
-                //   title: res.data.msg,
-                // })
+                wx.showToast({
+                  title: "加入购物车成功",
+                })
             }else{
                 wx.showToast({
                   title: res.data.msg,

@@ -1,21 +1,28 @@
 <view class="cart">
-    <!-- 全选按钮 -->
-    <checkbox class="select-all" bindtap="selectAllHandle" checked="{{ isAllSelected }}">全选</checkbox>
-    <!-- 购物车列表 -->
-    <scroll-view class="list" scroll-y="true">
-        <block wx:for="{{ cartData }}" wx:key="index">
-            <view class="cart-item">
-                <!-- 复选框 -->
-                <checkbox class="checkbox" data-id="{{ item.id }}" bindtap="toggleSelectHandle" checked="{{ isSelected(item.id) }}"></checkbox>
-                <div>{{ item.id }}  你好{{selectedIds}}</div>
-                <!-- 商品信息 -->
-                <van-swipe-cell right-width="{{ 65 }}">
-                    <van-card style="position: relative; left: 0rpx; top: 0rpx" price="{{ item.price }}" title="{{ item.title }}" thumb="{{ item.url }}" />
-                    <view data-id="{{ item.id }}" bindtap="delCartHandle" slot="right" class="van-swipe-cell-right">删除</view>
-                </van-swipe-cell>
+  <!-- 全选按钮 -->
+  <checkbox class="select-all" bindtap="selectAllHandle" checked="{{ isAllSelected }}">全选</checkbox>
+  <!-- 购物车列表 -->
+  <scroll-view class="list" scroll-y="true">
+    <block wx:for="{{ cartData }}" wx:key="index">
+      <view class="cart-item">
+        <!-- 复选框 -->
+        <checkbox class="checkbox" data-id="{{ item.id }}" bindtap="toggleSelectHandle" checked="{{ item.isCheck || isAllSelected }}"></checkbox>
+        <div>{{ item.id }}+ 你好 + {{item.isCheck}} +{{selectedIds}} + {{isAllSelected}}</div>
+        <!-- 商品信息 -->
+        <van-swipe-cell right-width="{{ 65 }}">
+          <van-card style="position: relative; left: 0rpx; top: 0rpx" num="{{item.good_num}}" price="{{ item.price * item.good_num }}" title="{{ item.title }}" thumb="{{ item.url }}">
+            <view slot="footer">
+              <van-button class="plus-button" bindtap="increaseQuantity" data-id="{{ item.id }}">+</van-button>
+              <van-button class="minus-button" bindtap="decreaseQuantity" data-id="{{ item.id }}">-</van-button>
             </view>
-        </block>
-    </scroll-view>
-    <!-- 删除选中按钮 -->
-    <view class="delete-selected" bindtap="deleteSelectedHandle">删除选中</view>
+          </van-card>
+          <view data-id="{{ item.id }}" bindtap="delCartHandle" slot="right" class="van-swipe-cell-right">删除</view>
+        </van-swipe-cell>
+      </view>
+    </block>
+  </scroll-view>
+  <!-- 删除选中按钮 -->
+  <view class="delete-selected" bindtap="deleteSelectedHandle">删除选中</view>
 </view>
+
+<van-submit-bar price="{{ 12 * 100 }}" button-text="提交订单" bind:submit="onSubmit" />
