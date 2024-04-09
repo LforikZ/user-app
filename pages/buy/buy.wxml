@@ -1,4 +1,10 @@
 <view>
-    <van-card price="{{ goodsData.price }}" title="{{ goodsData.title }}" thumb="{{ goodsData.url }}" />
-    <van-submit-bar price="{{ goodsData.price * 100 }}" button-text="提交订单" bind:submit="onSubmit" />
+  <van-card price="{{ goodsData.price }}" title="{{ goodsData.title }}" thumb="{{ goodsData.url }}" num="{{goodsData.num}}">
+    <view slot="footer">
+      <van-button class="plus-button" bind:tap="increaseQuantity">+</van-button>
+      <van-button class="minus-button" bind:tap="decreaseQuantity">-</van-button>
+    </view>
+  </van-card>
+
+  <van-submit-bar price="{{ goodsData.price * goodsData.num * 100 }}" button-text="提交订单" bind:submit="onSubmit" />
 </view>

@@ -77,6 +77,7 @@ Page({
      * 立即购买
      */
     onClickBuy(e){
+      console.log(e.currentTarget.dataset.id)
         wx.navigateTo({
           url: '/pages/buy/buy?id='+e.currentTarget.dataset.id,
         })
