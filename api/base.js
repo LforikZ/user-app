@@ -17,5 +17,6 @@ module.exports = {
   categoryGoods: "/api/category/goods", // 获取分类下的所有商品
   expirationGoods:"/api/expiration/list", // 获取临期食品
   buy: "/api/cart/buy", // 购买
+  directBuy:"/api/cart/direct/buy", // 直接购买
   login: "/api/login", // 登录
 }

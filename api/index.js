@@ -1,5 +1,5 @@
 const { request } = require("../utils/request.js")
-const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,categoryGoods,buy, categoryList,searchContest,expirationGoods } = require("./base")
+const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,categoryGoods,buy,directBuy, categoryList,searchContest,expirationGoods } = require("./base")
 /**
  * 网络请求方法
  */
@@ -76,11 +76,18 @@ function getCategoryGoods(data){
 }
 
 /**
- * buy
+ * buy 购物车购买
  */
-function getBuy(data){
-    return request(baseUrl + buy,"GET",data) 
+function postBuy(data){
+    return request(baseUrl + buy,"POST",data) 
 }
+/**
+ * direct 直接购买结算
+ */
+function postDirectBuy(data){
+  return request(baseUrl + directBuy,"POST",data) 
+}
+
 
 function getLogin(data){
     return request(baseUrl + login,"POST",data) 
@@ -112,7 +119,8 @@ module.exports = {
     delGoodsCart,
     getCategoryList,
     getCategoryGoods,
-    getBuy,
+    postBuy,
+    postDirectBuy,
     getLogin,
     addSearchContest,
     getExpirationGoods,
