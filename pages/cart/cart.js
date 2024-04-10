@@ -13,12 +13,7 @@ Page({
     selectedIds: [], // 存储选中项的 id
     isAllSelected: false // 是否全选标志
   },
-
-  // 判断是否被选中
-  isSelected(id) {
-    console.log("执行判断语句");
-    return this.data.selectedIds.includes(id);
-  },
+  
   // 全选
   selectAllHandle() {
     if (this.data.isAllSelected) {
@@ -37,7 +32,7 @@ Page({
       });
     } else {
       const cartData = this.data.cartData;
-      const selectedIds = cartData.map(item => item.id);
+      const selectedIds = cartData.map(item => item.cart_id);
 
       // 将每个商品的 isCheck 属性设置为 true
       const modifiedCartData = cartData.map(item => {
@@ -69,7 +64,7 @@ Page({
 
     // 更新商品对象的 isCheck 属性
     const modifiedCartData = cartData.map(item => {
-      if (item.id === id) {
+      if (item.cart_id === id) {
         item.isCheck = !item.isCheck; // 切换 isCheck 属性的值
         console.log(item)
       }
@@ -98,8 +93,9 @@ Page({
   // 删除单个商品
   delCartHandle(e) {
     const itemId = e.currentTarget.dataset.id;
+    console.log(itemId)
     delGoodsCart({
-      currentID: itemId
+      id: itemId
     }).then(res => {
       if (res.data.status === 200) {
         wx.showToast({
@@ -119,7 +115,7 @@ Page({
   increaseQuantity(event) {
     const itemId = event.currentTarget.dataset.id;
     const cartData = this.data.cartData.map(item => {
-      if (item.id === itemId) {
+      if (item.cart_id === itemId) {
         item.good_num++; // 增加当前商品数量
       }
       return item;
@@ -133,7 +129,7 @@ Page({
   decreaseQuantity(event) {
     const itemId = event.currentTarget.dataset.id;
     const cartData = this.data.cartData.map(item => {
-      if (item.id === itemId && item.good_num > 1) {
+      if (item.cart_id === itemId && item.good_num > 1) {
         item.good_num--; // 减少当前商品数量
       }
       return item;
@@ -149,7 +145,7 @@ Page({
     const good = this.data.goodsData;
     postDirectBuy({
       open_id: wx.getStorageSync("loginID"),
-      good_id: good.id,
+      good_id: good.good_id,
       price: good.price * good.num,
       tag_id: good.tag_id,
       tag_name: good.tag_name,
