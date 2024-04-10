@@ -58,7 +58,7 @@ function addGoodsCart(data){
  * cart del
  */
 function delGoodsCart(data){
-    return request(baseUrl + delCart,"DELETE",data) 
+    return request(baseUrl + delCart,"PUT",data) 
 }
 
 /**

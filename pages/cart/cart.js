@@ -13,7 +13,7 @@ Page({
     selectedIds: [], // 存储选中项的 id
     isAllSelected: false // 是否全选标志
   },
-  
+
   // 全选
   selectAllHandle() {
     if (this.data.isAllSelected) {
@@ -81,28 +81,29 @@ Page({
   },
 
   // 删除选中项
-  deleteSelectedHandle() {
-    const selectedIds = this.data.selectedIds;
-    const cartData = this.data.cartData.filter(item => !selectedIds.includes(item.id));
-    this.setData({
-      cartData,
-      selectedIds: [],
-      isAllSelected: false
-    });
-  },
+  // deleteSelectedHandle() {
+  //   const selectedIds = this.data.selectedIds;
+  //   const cartData = this.data.cartData.filter(item => !selectedIds.includes(item.id));
+  //   this.setData({
+  //     cartData,
+  //     selectedIds: [],
+  //     isAllSelected: false
+  //   });
+  // },
   // 删除单个商品
   delCartHandle(e) {
     const itemId = e.currentTarget.dataset.id;
     console.log(itemId)
     delGoodsCart({
-      id: itemId
+      id: e.currentTarget.dataset.id
     }).then(res => {
-      if (res.data.status === 200) {
+      console.log(res.data.F_responseNo)
+      if (res.data.F_responseNo === 10000) {
         wx.showToast({
           title: '删除成功',
         })
-        // 重新请求购物车数据
-        this.http();
+        // 删除成功后重新加载购物车数据
+        this.http(); // 假设这是重新加载购物车数据的函数
       } else {
         wx.showToast({
           title: '删除失败',
@@ -173,6 +174,7 @@ Page({
 
   // 请求购物车数据
   http() {
+    console.log("获取购物车数据")
     getCart({
       open_id: wx.getStorageSync("loginID")
     }).then(res => {
