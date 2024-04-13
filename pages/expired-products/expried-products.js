@@ -51,7 +51,7 @@ Page({
           title: '重新上架成功',
         })
         // 删除成功后重新加载购物车数据
-        this.http(this.data.sliderData[this.data.activeKey].id); // 假设这是重新加载购物车数据的函数
+        this.http(this.data.sliderData[this.data.activeKey].id); 
       } else {
         wx.showToast({
           title: '重新上架失败',
