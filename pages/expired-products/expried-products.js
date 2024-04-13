@@ -2,7 +2,7 @@ import {
   getCategoryList,
   getSearch,
   getExpirationGoods,
-  adjustmentExpirationFood
+  adjustmentExpirationFood,
 } from "../../api/index.js"
 
 Page({
@@ -32,11 +32,16 @@ Page({
 
   },
   clickItemNav(e) {
+    console.log("id = "+e.currentTarget.dataset.title)
+    this.setData({
+      activeKey:e.currentTarget.dataset.title
+    })
     this.http(e.currentTarget.dataset.title)
   },
   reListed() {
+    console.log("运行+reListed")
     adjustmentExpirationFood({
-      tag_id: id,
+      tag_id: this.data.sliderData[this.data.activeKey].id,
       food_tag: 1, // 过期食品
       state_tag:1, // 上架商品
     }).then(res => {
@@ -46,7 +51,7 @@ Page({
           title: '重新上架成功',
         })
         // 删除成功后重新加载购物车数据
-        this.http(); // 假设这是重新加载购物车数据的函数
+        this.http(this.data.sliderData[this.data.activeKey].id); // 假设这是重新加载购物车数据的函数
       } else {
         wx.showToast({
           title: '重新上架失败',
