@@ -1,17 +1,18 @@
 <view class="wrapper">
-    <view class="title-nav-container">
-        <view class="page-title">过期食品</view>
-        <view class="content-container">
-            <view class="left-nav">
-                <van-sidebar active-key="{{ activeKey }}">
-                    <block wx:for="{{ sliderData }}" wx:key="index">
-                        <van-sidebar-item data-title="{{ item.id }}" bindtap="clickItemNav" title="{{ item.name }}" />
-                    </block>
-                </van-sidebar>
-            </view>
-            <view class="goods-list-container">
-                <goods-list goodsData="{{ categoryData }}"> </goods-list>
-            </view>
-        </view>
+  <view class="title-nav-container">
+    <view class="page-title">过期食品</view> <button bindtap="reListed"> 重新上架 </button>
+    <view class="content-container">
+      <view class="left-nav">
+        <van-sidebar active-key="{{ activeKey }}">
+          <block wx:for="{{ sliderData }}" wx:key="index">
+            <van-sidebar-item data-title="{{ item.id }}" bindtap="clickItemNav" title="{{ item.name }}" />
+          </block>
+        </van-sidebar>
+
+      </view>
+      <view class="goods-list-container">
+        <goods-list goodsData="{{ categoryData }}"> </goods-list>
+      </view>
     </view>
+  </view>
 </view>

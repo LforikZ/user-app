@@ -18,5 +18,6 @@ module.exports = {
   expirationGoods:"/api/expiration/list", // 获取临期食品
   buy: "/api/cart/buy", // 购买
   directBuy:"/api/cart/direct/buy", // 直接购买
+  adjust:"/api/expiration/adjust", // 一键调整上架或者下架，临期或过期食品
   login: "/api/login", // 登录
 }

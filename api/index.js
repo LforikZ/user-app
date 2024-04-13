@@ -1,5 +1,5 @@
 const { request } = require("../utils/request.js")
-const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,categoryGoods,buy,directBuy, categoryList,searchContest,expirationGoods } = require("./base")
+const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,categoryGoods,buy,directBuy, categoryList,searchContest,expirationGoods,adjust } = require("./base")
 /**
  * 网络请求方法
  */
@@ -107,6 +107,13 @@ function getExpirationGoods(data){
   return request(baseUrl + expirationGoods,"GET",data) 
 }
 
+/**
+ * 批量上架或者下架，临期或过期食品
+ */
+function adjustmentExpirationFood(data){
+  return request(baseUrl + adjust,"PUT",data) 
+}
+
 
 module.exports = {
     getBanner,
@@ -124,4 +131,5 @@ module.exports = {
     getLogin,
     addSearchContest,
     getExpirationGoods,
+    adjustmentExpirationFood,
 }
