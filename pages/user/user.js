@@ -14,6 +14,13 @@ Page({
         userInfo: wx.getStorageSync('userInfo')
       })
     }
+    // 检查 loginID 是否为商家标识
+    if (wx.getStorageSync("loginID") === 'oSLGA6p9a_8EonTJCfYvwz1GatPw') {
+      this.setData({
+        isMerchant: true
+      });
+      wx.setStorageSync('isMerchant', this.isMerchant)
+    }
   },
   getUserProfile() {
     wx.getUserProfile({
@@ -65,8 +72,8 @@ Page({
       url: '/pages/expiring-products/expiring-products'
     });
   },
-   // 查看过期商品
-   viewExpiredProducts() {
+  // 查看过期商品
+  viewExpiredProducts() {
     wx.navigateTo({
       url: '/pages/expired-products/expried-products'
     });
